@@ -1,0 +1,15 @@
+{
+  "name": "neon-offline",
+  "version": "1.0.0",
+  "description": "This example repository shows how to use the Neon library in an local / offline environment. It uses Neon with the [Drizzle ORM](https://github.com/drizzle-team/drizzle-orm) but any other library should work the same.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@neondatabase/serverless": "^0.5.6",
+    "drizzle-orm": "^0.28.0"
+  }
+}

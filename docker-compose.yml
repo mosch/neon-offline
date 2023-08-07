@@ -1,0 +1,28 @@
+
+version: '2.2'
+
+services:
+  db:
+    image: postgres:15-alpine
+    restart: always
+    ports:
+      - '5432:5432'
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_HOST_AUTH_METHOD=trust
+    volumes:
+      - db:/var/lib/postgresql/data
+      - ./packages/api/drizzle/:/docker-entrypoint-initdb.d/
+  proxy:
+    image: ghcr.io/neondatabase/wsproxy:latest
+    environment:
+      - ALLOW_ADDR_REGEX=^.*$
+    ports:
+      - '80:80'
+      - '2112:2112'
+    depends_on:
+      - db
+volumes:
+  db:
+    driver: local
